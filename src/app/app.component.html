@@ -110,7 +110,7 @@
 
     <div class="result-pics-container">
       <div class="result-pic" *ngFor="let result of results; let i = index">
-        <img class="pic-img" src="./assets/pokemons/{{result.pokemon.pic}}" alt="{{ result.pokemon.name }}">
+        <img class="pic-img" src="assets/pokemons/{{result.pokemon.pic}}" alt="{{ result.pokemon.name }}">
         <img class="item-img" src="{{ items[result.itemUsed - 1].fileLocation }}" alt="{{items[result.itemUsed]}}">
       </div>
     </div>
