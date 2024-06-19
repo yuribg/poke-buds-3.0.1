@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:prod": "ng build --configuration=production --base-href=https://yuribg.github.io/poke-buds-3.0.1/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

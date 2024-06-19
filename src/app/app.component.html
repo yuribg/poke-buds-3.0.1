@@ -1,7 +1,7 @@
 <!-- Toolbar -->
 <div class="toolbar" role="banner">
   <a (click)="playAgain()" href="#">
-    <img src="../assets/items/ball5_friend.png" alt="icon" style="height: 80%; margin-right: 10px;">
+    <img src="./assets/items/ball5_friend.png" alt="icon" style="height: 80%; margin-right: 10px;">
     <span>Poké Buds</span>
   </a>
 </div>
@@ -30,13 +30,13 @@
       <div class="card-container">
         <button class="card card-small" (click)="selection.value = 'pokeball'; throwBall(1)" tabindex="0"
           [disabled]="pbCounter == 0" [ngClass]="{'disabled-item': pbCounter == 0}">
-          <img src="../assets/items/ball1_poke.png" alt="icon" style="height: 120%; margin-right: 20px;">
+          <img src="./assets/items/ball1_poke.png" alt="icon" style="height: 120%; margin-right: 20px;">
           <span>{{ items[0].itemName }} ({{ pbCounter }}x)</span>
         </button>
 
         <button class="card card-small" (click)="selection.value = 'greatball'; throwBall(2)" tabindex="0"
           [disabled]="gbCounter == 0" [ngClass]="{'disabled-item': gbCounter == 0}">
-          <img src="../assets/items/ball2_great.png" alt="icon" style="height: 120%; margin-right: 20px;">
+          <img src="./assets/items/ball2_great.png" alt="icon" style="height: 120%; margin-right: 20px;">
           <span>{{ items[1].itemName }} ({{ gbCounter }}x)</span>
         </button>
       </div>
@@ -44,13 +44,13 @@
       <div class="card-container">
         <button class="card card-small" (click)="selection.value = 'ultraball'; throwBall(3)" tabindex="0"
           [disabled]="ubCounter == 0" [ngClass]="{'disabled-item': ubCounter == 0}">
-          <img src="../assets/items/ball3_ultra.png" alt="icon" style="height: 120%; margin-right: 20px;">
+          <img src="./assets/items/ball3_ultra.png" alt="icon" style="height: 120%; margin-right: 20px;">
           <span>{{ items[2].itemName }} ({{ ubCounter }}x)</span>
         </button>
 
         <button class="card card-small" (click)="selection.value = 'masterball'; throwBall(4)" tabindex="0"
           [disabled]="mbCounter == 0" [ngClass]="{'disabled-item': mbCounter == 0}">
-          <img src="../assets/items/ball4_master.png" alt="icon" style="height: 120%; margin-right: 20px;">
+          <img src="./assets/items/ball4_master.png" alt="icon" style="height: 120%; margin-right: 20px;">
           <span>{{ items[3].itemName }} ({{ mbCounter }}x)</span>
         </button>
       </div>
@@ -58,7 +58,7 @@
       <div class="card-container">
         <button class="card card-small full-card" (click)="selection.value = 'run'; useRun()" tabindex="0"
           [disabled]="runCounter == 0" [ngClass]="{'disabled-item': runCounter == 0}">
-          <img src="../assets/items/run.png" alt="icon" style="height: 180%; margin-right: 10px;">
+          <img src="./assets/items/run.png" alt="icon" style="height: 180%; margin-right: 10px;">
           <span>{{ items[4].itemName }} ({{ runCounter }}x)</span>
         </button>
       </div>
@@ -110,7 +110,7 @@
 
     <div class="result-pics-container">
       <div class="result-pic" *ngFor="let result of results; let i = index">
-        <img class="pic-img" src="../assets/pokemons/{{result.pokemon.pic}}" alt="{{ result.pokemon.name }}">
+        <img class="pic-img" src="./assets/pokemons/{{result.pokemon.pic}}" alt="{{ result.pokemon.name }}">
         <img class="item-img" src="{{ items[result.itemUsed - 1].fileLocation }}" alt="{{items[result.itemUsed]}}">
       </div>
     </div>
@@ -141,7 +141,7 @@
 <div class="content mobile-margin" role="main" *ngIf="endGame">
   <div class="card-container">
     <button class="card card-small full-card" *ngIf="endGame" (click)="playAgain()">
-      <img src="../assets/items/ball5_friend.png" alt="icon" style="height: 180%; margin-right: 10px;">
+      <img src="./assets/items/ball5_friend.png" alt="icon" style="height: 180%; margin-right: 10px;">
       <span><b>Play Again</b></span>
     </button>
   </div>
