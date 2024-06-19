@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-docker-nginx": {
+    "poke-buds-3.0.1": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -34,13 +34,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "4mb",
+                  "maximumError": "8mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "10kb",
+                  "maximumError": "20kb"
                 }
               ],
               "outputHashing": "all"
@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "angular-docker-nginx:build:production"
+              "browserTarget": "poke-buds-3.0.1:build:production"
             },
             "development": {
-              "browserTarget": "angular-docker-nginx:build:development"
+              "browserTarget": "poke-buds-3.0.1:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-docker-nginx:build"
+            "browserTarget": "poke-buds-3.0.1:build"
           }
         },
         "test": {

@@ -6,19 +6,25 @@
 - CSS style format.
 
 ```
-npx @angular/cli@16 new angular-docker-nginx --routing true --style css
+npx @angular/cli@16 new poke-buds-3.0.1 --routing true --style css
 ```
 
 Do everything inside angular app folder.
 
 ```
-cd angular-docker-nginx
+cd poke-buds-3.0.1
 ```
 
 Check if app is running using 
 
 ```
 ng serve
+```
+
+Install dependencies:
+
+```
+npm i
 ```
 
 And listen on default port 4200.
@@ -54,7 +60,7 @@ RUN npm run build
 FROM nginx:latest
 
 # Copy the build output to replace the default nginx contents.
-COPY --from=build /usr/local/app/dist/angular-docker-nginx /usr/share/nginx/html
+COPY --from=build /usr/local/app/docs /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80
@@ -63,7 +69,7 @@ EXPOSE 80
 ## 3. Create Docker image.
 
 ```
-docker build -t yuribg/angular-docker-nginx-image:latest  .
+docker build -t yuribg/poke-buds-3.0.1:latest  .
 ```
 
 Check docker image created.
@@ -75,7 +81,7 @@ docker image ls
 ## 4. Run Docker container.
 
 ```
-docker run -d -p 8080:80 --name angular-docker-nginx yuribg/angular-docker-nginx-image:latest
+docker run -d -p 8080:80 --name poke-buds-3.0.1 yuribg/poke-buds-3.0.1:latest
 ```
 
 Check docker container running.
@@ -92,7 +98,7 @@ docker ps
 
 ```
 docker login -u <username> -p <password>
-docker push yuribg/angular-docker-nginx-image:latest
+docker push yuribg/poke-buds-3.0.1:latest
 ```
 
 ## 7. Deploy to GitHub Pages:
@@ -100,7 +106,7 @@ docker push yuribg/angular-docker-nginx-image:latest
 Check base href on build:
 
 ```
-ng build --configuration=production --base-href=https://yuribg.github.io/angular-docker-nginx/
+ng build --configuration=production --base-href=https://yuribg.github.io/poke-buds-3.0.1/
 
 git add . && git commit -m "deploy 1" && git push
 ```
