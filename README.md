@@ -106,8 +106,7 @@ docker push yuribg/poke-buds-3.0.1:latest
 Check base href on build:
 
 ```
-ng build --configuration=production --base-href=https://yuribg.github.io/poke-buds-3.0.1/
-
+ng build --configuration=production --base-href=https://yuribg.github.io/poke-buds-3.0.1/ |
 git add . && git commit -m "deploy 1" && git push
 ```
 
