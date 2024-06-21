@@ -107,7 +107,7 @@ Check base href on build:
 
 ```
 ng build --configuration=production --base-href=https://yuribg.github.io/poke-buds-3.0.1/ |
-git add . && git commit -m "deploy 1" && git push
+git add . && git commit -m "deploy GitHub Pages" && git push
 ```
 
 Source:
@@ -131,14 +131,14 @@ Models for Gen VIII - Sword and Shield
 
 > [Pokémon shiny models](https://archives.bulbagarden.net/wiki/Category:Sword_and_Shield_Shiny_models)
 
-- Add shiny possibility
-- Add types
-- Add stats
+- Add shiny possibility OK
+- Add types 
+- Add stats 
 - Add sound
 - Add movement
 
 ## To game:
 
 - Add name
-- Add point system
-- Fix white line below play again
+- Add point system OK
+- Fix white line below play again OK
