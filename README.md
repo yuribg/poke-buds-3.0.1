@@ -107,6 +107,7 @@ Check base href on build:
 
 ```
 ng build --configuration=production --base-href=https://yuribg.github.io/poke-buds-3.0.1/ |
+npm run nojekyll |
 git add . && git commit -m "deploy GitHub Pages" && git push
 ```
 
