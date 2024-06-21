@@ -1,5 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
-import { Pokemon } from './models/pokemon.model';
+import { Pokemon } from './data/pokemon.model';
+import { ItemData } from './data/db/item.data';
+import { Item } from './data/item.model';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +11,9 @@ import { Pokemon } from './models/pokemon.model';
 export class AppComponent implements OnInit {
   title = 'poke-buds';
 
-  public items: { itemId: number; itemName: string; fileLocation: string }[] = [
+  public points: number = 0;
+
+  items: Item [] = [
     {
       itemId: 1,
       itemName: 'Poké Ball',
@@ -30,8 +34,14 @@ export class AppComponent implements OnInit {
       itemName: 'Master Ball',
       fileLocation: './assets/items/ball4_master.png',
     },
-    { itemId: 5, itemName: 'Run', fileLocation: './assets/items/run.png' },
+    { itemId: 5,
+      itemName: 'Run',
+      fileLocation: './assets/items/run.png'
+    },
   ];
+
+  shinyFolder: String = "shiny";
+  normalFolder: String = "normal";
 
   public runCounter = 5;
   public pbCounter = 4;
@@ -51,8 +61,12 @@ export class AppComponent implements OnInit {
 
   public pokemons: Pokemon[] = [];
   public catches: boolean[] = [];
-  public results: { pokemon: Pokemon; caught: boolean; itemUsed: number }[] =
-    [];
+  public results: {
+    pokemon: Pokemon;
+    caught: boolean;
+    itemUsed: number;
+    reward: number
+  }[] = [];
 
   public endGame: boolean = false;
 
@@ -67,11 +81,9 @@ export class AppComponent implements OnInit {
   }
 
   gameStats() {
-    if (
-      this.pbCounter + this.gbCounter + this.ubCounter + this.mbCounter ==
-      0
-    ) {
+    if (this.pbCounter + this.gbCounter + this.ubCounter + this.mbCounter == 0) {
       this.endGame = true;
+      this.calculatePoints();
     }
   }
 
@@ -112,8 +124,7 @@ export class AppComponent implements OnInit {
       }
       case 4: {
         this.useMB();
-        this.catchResult =
-          this.randomNumberBall < this.mbThreshold ? true : false;
+        this.catchResult = true;
         this.catchResult ? this.newEncounter() : '';
         this.gameStats();
         return this.catchResult;
@@ -171,8 +182,83 @@ export class AppComponent implements OnInit {
       pokemon: pokemonCaught,
       caught: this.catchResult,
       itemUsed: this.lastItemUsed,
+      reward: this.getReward(pokemonCaught)
     });
-    console.log('Pokemons:', this.results);
+
+    this.calculatePoints();
+  }
+
+  getReward(pokemonCaught: Pokemon): number {
+    let reward = 0;
+
+    switch(pokemonCaught.rarity) { 
+      case 1: {
+        reward += 50;
+        break; 
+      } 
+      case 2: {
+        reward += 100;
+        break; 
+      }
+      case 3: {
+        reward += 150;
+        break; 
+      }
+      case 4: {
+        reward += 300;
+        break; 
+      }
+      case 5: {
+        reward += 500;
+        break; 
+      }
+      case 6: {
+        reward += 1000;
+        break; 
+      }
+      default: {
+        reward += 0;
+        break; 
+      } 
+    }
+
+    switch(pokemonCaught.evolution) {
+      case 0: {
+        reward += 50;
+        break; 
+      } 
+      case 1: {
+        reward += 100;
+        break; 
+      }
+      case 2: {
+        reward += 200;
+        break; 
+      }
+      default: {
+        reward += 0;
+        break; 
+      } 
+    }
+
+    if(pokemonCaught.shiny) { 
+      reward *= 2;
+    }
+
+    return reward;
+  }
+
+  calculatePoints() {
+    let points = 0;
+    this.results.forEach((pokemonCaught) => {
+      pokemonCaught.itemUsed != 5 ? points += pokemonCaught.reward : points += 0;
+    });
+
+    this.points = points;
+  }
+
+  getSpriteFolderCondition(shiny: boolean | undefined) {
+    return shiny ? this.shinyFolder : this.normalFolder;
   }
 
   playAgain() {

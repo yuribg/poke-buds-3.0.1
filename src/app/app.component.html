@@ -71,8 +71,8 @@
       <h2 class="text-center">Your Information</h2>
       <div class="user-card">
         <pre>
-          <p>User: X</p>
-          <p>Points: Y</p>
+          <!-- <p>User: X</p> -->
+          <p>Points: {{ points }}</p>
         </pre>
       </div>
     </div>
@@ -106,11 +106,11 @@
 <div class="content" role="main" *ngIf="endGame">
   <div class="encounter-section">
     <h2 class="text-center">Encounters</h2>
-    <p class="text-center">Here is what you accomplished</p>
+    <p class="text-center">Here are your encounters</p>
 
     <div class="result-pics-container">
       <div class="result-pic" *ngFor="let result of results; let i = index">
-        <img class="pic-img" src="./assets/pokemons/{{result.pokemon.pic}}" alt="{{ result.pokemon.name }}">
+        <img class="pic-img" src="./assets/pokemons/{{getSpriteFolderCondition(result.pokemon.shiny)}}/{{ result.pokemon.pic }}" alt="{{ result.pokemon.name }}">
         <img class="item-img" src="{{ items[result.itemUsed - 1].fileLocation }}" alt="{{items[result.itemUsed]}}">
       </div>
     </div>
@@ -118,8 +118,16 @@
 
   <div class="user-section">
     <!-- User Card -->
-    <h2 class="text-center">Your Game Results</h2>
-    <p class="text-center">Here is what you accomplished</p>
+    <div class="user-info">
+      <h2 class="text-center">Game Results</h2>
+      <p class="text-center">Here is what you accomplished</p>
+      <div class="user-card">
+        <pre>
+          <!-- <p>User: X</p> -->
+          <p>Points: {{ points }}</p>
+        </pre>
+      </div>
+    </div>
 
     <div class="results-card">
       <p *ngFor="let result of results; let i = index"
@@ -127,14 +135,7 @@
         {{ i + 1 }}. {{ result.pokemon.name }} {{ result.caught ? "caught" : "not caught" }}
         ({{ items[result.itemUsed - 1].itemName }})
       </p>
-    </div>
-
-    <!-- Footer -->
-    <footer class="border-top footer text-muted">
-      <div class="container text-center">
-        Poké Buds
-      </div>
-    </footer>    
+    </div> 
   </div>
 </div>
 

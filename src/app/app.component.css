@@ -53,11 +53,15 @@
   
   .content {
     display: flex;
-    margin: 82px auto 32px;
+    margin: 64px auto 16px;
     padding: 0 16px;
     max-width: 960px;
     flex-direction: row;
     justify-content: space-around;
+  }
+
+  .content.mobile-margin {
+    margin-top: 0;
   }
   
   .encounter-section {
@@ -82,10 +86,10 @@
   }
   
   .card-container {
-    display: flex;
+    width: 100%;    display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 8px;
+    margin: 8px 0 0;
   }
   
   .card {
@@ -209,6 +213,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    font-size: 2em;
   }
   
   .results-card {

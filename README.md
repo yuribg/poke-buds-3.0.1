@@ -112,3 +112,33 @@ git add . && git commit -m "deploy 1" && git push
 
 Source:
 [HOW TO DOCKERIZE AN ANGULAR APPLICATION WITH NGINX](https://levioconsulting.com/insights/how-to-dockerize-an-angular-application-with-nginx/)
+
+# To Do - Next steps:
+
+## To pokémon:
+
+Models for Gen VIII - Sword and Shield
+
+> [Pokémon SW-SH models](https://www.serebii.net/pokedex-swsh/)
+
+> [Bulbapedia sprites](https://archives.bulbagarden.net/wiki/Category:Game_sprites)
+
+> [Pokémon types and habilities](https://www.serebii.net/pokemon/nationalpokedex.shtml)
+
+> [Pokémon GO models](https://archives.bulbagarden.net/wiki/Category:Pok%C3%A9mon_GO_models)
+
+> [Pokémon models](https://archives.bulbagarden.net/wiki/Category:Sword_and_Shield_models)
+
+> [Pokémon shiny models](https://archives.bulbagarden.net/wiki/Category:Sword_and_Shield_Shiny_models)
+
+- Add shiny possibility
+- Add types
+- Add stats
+- Add sound
+- Add movement
+
+## To game:
+
+- Add name
+- Add point system
+- Fix white line below play again
