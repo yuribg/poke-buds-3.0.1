@@ -69,7 +69,7 @@ EXPOSE 80
 ## 3. Create Docker image.
 
 ```
-docker build -t yuribg/poke-buds-3.0.1:latest  .
+docker build -t yuribg/poke-buds-3.0.1:latest .
 ```
 
 Check docker image created.

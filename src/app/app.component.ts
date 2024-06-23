@@ -209,7 +209,7 @@ export class AppComponent implements OnInit {
         break; 
       }
       case 5: {
-        reward += 500;
+        reward += 700;
         break; 
       }
       case 6: {
@@ -242,9 +242,11 @@ export class AppComponent implements OnInit {
     }
 
     if(pokemonCaught.shiny) { 
-      reward *= 2;
+      reward *= 3;
     }
 
+    console.log(pokemonCaught);
+    console.log(reward);
     return reward;
   }
 
