@@ -224,15 +224,15 @@ export class AppComponent implements OnInit {
 
     switch(pokemonCaught.evolution) {
       case 1: {
-        reward += 50;
+        reward += 100;
         break; 
       } 
       case 2: {
-        reward += 100;
+        reward += 200;
         break; 
       }
       case 3: {
-        reward += 200;
+        reward += 300;
         break; 
       }
       default: {
