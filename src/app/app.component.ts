@@ -197,23 +197,23 @@ export class AppComponent implements OnInit {
         break; 
       } 
       case 2: {
-        reward += 100;
-        break; 
-      }
-      case 3: {
         reward += 150;
         break; 
       }
+      case 3: {
+        reward += 250;
+        break; 
+      }
       case 4: {
-        reward += 300;
+        reward += 450;
         break; 
       }
       case 5: {
-        reward += 700;
+        reward += 750;
         break; 
       }
       case 6: {
-        reward += 1000;
+        reward += 1450;
         break; 
       }
       default: {
@@ -224,15 +224,15 @@ export class AppComponent implements OnInit {
 
     switch(pokemonCaught.evolution) {
       case 1: {
-        reward += 100;
+        reward += 50;
         break; 
       } 
       case 2: {
-        reward += 200;
+        reward += 150;
         break; 
       }
       case 3: {
-        reward += 300;
+        reward += 350;
         break; 
       }
       default: {
@@ -243,6 +243,10 @@ export class AppComponent implements OnInit {
 
     if(pokemonCaught.shiny) { 
       reward *= 3;
+
+      if(pokemonCaught.id == 129 || pokemonCaught.id == 130) {
+        reward += 500;
+      }
     }
 
     console.log(pokemonCaught);
