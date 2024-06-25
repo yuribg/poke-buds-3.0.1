@@ -178,11 +178,13 @@ export class AppComponent implements OnInit {
   }
 
   pokemonCaught(pokemonCaught: Pokemon) {
+    let currentReward = this.getReward(pokemonCaught)
+
     this.results.push({
       pokemon: pokemonCaught,
       caught: this.catchResult,
       itemUsed: this.lastItemUsed,
-      reward: this.getReward(pokemonCaught)
+      reward: currentReward
     });
 
     this.calculatePoints();
@@ -191,66 +193,69 @@ export class AppComponent implements OnInit {
   getReward(pokemonCaught: Pokemon): number {
     let reward = 0;
 
-    switch(pokemonCaught.rarity) { 
-      case 1: {
-        reward += 50;
-        break; 
-      } 
-      case 2: {
-        reward += 150;
-        break; 
+    if (typeof pokemonCaught !== 'undefined') {
+      switch(pokemonCaught.rarity) { 
+        case 1: {
+          reward += 50;
+          break; 
+        } 
+        case 2: {
+          reward += 150;
+          break; 
+        }
+        case 3: {
+          reward += 250;
+          break; 
+        }
+        case 4: {
+          reward += 450;
+          break; 
+        }
+        case 5: {
+          reward += 750;
+          break; 
+        }
+        case 6: {
+          reward += 1450;
+          break; 
+        }
+        default: {
+          reward += 0;
+          break; 
+        } 
       }
-      case 3: {
-        reward += 250;
-        break; 
+  
+      switch(pokemonCaught.evolution) {
+        case 1: {
+          reward += 50;
+          break; 
+        } 
+        case 2: {
+          reward += 150;
+          break; 
+        }
+        case 3: {
+          reward += 350;
+          break; 
+        }
+        default: {
+          reward += 0;
+          break; 
+        } 
       }
-      case 4: {
-        reward += 450;
-        break; 
+  
+      if(pokemonCaught.shiny) { 
+        reward *= 3;
+  
+        if(pokemonCaught.id == 129 || pokemonCaught.id == 130) {
+          reward += 500;
+        }
       }
-      case 5: {
-        reward += 750;
-        break; 
-      }
-      case 6: {
-        reward += 1450;
-        break; 
-      }
-      default: {
-        reward += 0;
-        break; 
-      } 
+
+      console.log("Pokémon caught:", pokemonCaught);
+      console.log("Reward:", reward);
     }
-
-    switch(pokemonCaught.evolution) {
-      case 1: {
-        reward += 50;
-        break; 
-      } 
-      case 2: {
-        reward += 150;
-        break; 
-      }
-      case 3: {
-        reward += 350;
-        break; 
-      }
-      default: {
-        reward += 0;
-        break; 
-      } 
-    }
-
-    if(pokemonCaught.shiny) { 
-      reward *= 3;
-
-      if(pokemonCaught.id == 129 || pokemonCaught.id == 130) {
-        reward += 500;
-      }
-    }
-
-    console.log(pokemonCaught);
-    console.log(reward);
+    
     return reward;
   }
 
